@@ -2,7 +2,7 @@
 using System;
 
 int loopCount = 100_000_000;
-int count = 6;
+int count = 100;
 
 Console.WriteLine($"Sum of numbers from 1 to {count}: {SumNumbers(count)}");
 
