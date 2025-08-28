@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using CustomListImplimentation;
+
+GaList<int> gaList = new();
+gaList.Add(10);
+
+gaList[2] = 20; // set
+var value = gaList[2]; // get
