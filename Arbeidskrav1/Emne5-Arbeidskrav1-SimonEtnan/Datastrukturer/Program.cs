@@ -1,15 +1,6 @@
-﻿using Datastrukturer;
+﻿
+using Datastrukturer;
 
-namespace Datastrukturer;
-
-public class SinglyLinkedList<T> : ISinglyLinkedList<T>, IEnumerable<T>
-
-
-
-class Program
-{
-    static void Main()
-    {
         // --- SinglyLinkedList ---
         var list = new SinglyLinkedList<int>();
         list.AddFirst(2);         // [2]
@@ -48,5 +39,3 @@ class Program
         try { cq2.Enqueue(3); throw new Exception("CQ enqueue skulle kaste ved full."); }
         catch (InvalidOperationException) { Console.WriteLine("CQ overflow OK"); }
         Console.WriteLine(cq2.Dequeue() == 1 ? "CQ OK" : "CQ FEIL");
-    }
-}
