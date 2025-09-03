@@ -1,41 +1,97 @@
-﻿
-using Datastrukturer;
+﻿using System.Runtime.ConstrainedExecution;
+using Datastrukturer.Interfaces;
+using System.Linq;
 
-        // --- SinglyLinkedList ---
-        var list = new SinglyLinkedList<int>();
-        list.AddFirst(2);         // [2]
-        list.AddLast(5);          // [2,5]
-        list.AddFirst(1);         // [1,2,5]
-        Console.WriteLine($"List Count: {list.Count}"); // 3
-        Console.WriteLine($"Contains(2): {list.Contains(2)}"); // True
-        Console.WriteLine($"Contains(9): {list.Contains(9)}"); // False
+namespace Datastrukturer
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("\nCircular Queue test:\n-----------------------------");
+            var capacity = 4;
+            var cq = new CircularQueue<int>(capacity);
 
-        Console.WriteLine("------------");
-        Console.Write("List items: ");
-        foreach (var x in list) Console.Write($"{x} "); // 1 2 5
-        Console.WriteLine();
 
-        Console.WriteLine("------------");
-        Console.WriteLine($"Remove(2): {list.Remove(2)}");   // True, [1,5]
-        Console.WriteLine($"Remove(9): {list.Remove(9)}");   // False
-        Console.WriteLine($"Count after removes: {list.Count}"); // 2
 
-        Console.WriteLine("------------");
-        Console.Write("List now: ");
-        foreach (var x in list) Console.Write($"{x} "); // 1 5
-        Console.WriteLine();
 
-        // --- Kanttilfelle-tester ---
-        var s = new MyStack<int>();
-        try { s.Pop(); throw new Exception("Pop skulle kaste exception."); }
-        catch (InvalidOperationException) { Console.WriteLine("Stack underflow OK"); }
+            Console.WriteLine("----------------------");
 
-        var q2 = new MyQueue<int>(1);
-        q2.Enqueue(42);
-        Console.WriteLine(q2.Dequeue() == 42 ? "Queue OK" : "Queue FEIL");
+            Console.WriteLine($"Kapasitet er satt til {capacity}");
+            Console.WriteLine($"Her er listen i sin helhet: {string.Join(", ", cq.PrintCircularQueue())}");
+            cq.Enqueue(10);
+            cq.Enqueue(20);
+            cq.Enqueue(30);
 
-        var cq2 = new CircularQueue<int>(2);
-        cq2.Enqueue(1); cq2.Enqueue(2);
-        try { cq2.Enqueue(3); throw new Exception("CQ enqueue skulle kaste ved full."); }
-        catch (InvalidOperationException) { Console.WriteLine("CQ overflow OK"); }
-        Console.WriteLine(cq2.Dequeue() == 1 ? "CQ OK" : "CQ FEIL");
+            Console.WriteLine("Henter ut element:");
+            Console.WriteLine(cq.Dequeue());
+
+            cq.Enqueue(50);
+
+            Console.WriteLine("Topp element er: " + cq.Peek());
+
+            while (!cq.IsEmpty)
+            {
+                Console.WriteLine("Henter ut element: " + cq.Dequeue());
+            }
+
+            Console.WriteLine($"Her er listen i sin helhet: {string.Join(", ", cq.PrintCircularQueue())}");
+
+            Console.WriteLine("\n-----------------------------");
+
+            Console.WriteLine("\nSingly linked list test:\n-----------------------------");
+            var list = new SinglyLinkedList<int>();
+            list.AddLast(230);
+            list.AddLast(231);
+            Console.WriteLine($"Contains(33): {list.Contains(33)}");
+            Console.WriteLine($"Antall elementer i listen? {list.Count}");
+
+            // Legger til elementer først i sist i listen
+            list.AddFirst(10);
+            list.AddFirst(20);
+            list.AddFirst(30);
+            Console.WriteLine("Elementer i listen:");
+            foreach (var item in list.PrintContent())
+            {
+                Console.WriteLine($"Index: {item.Item1}, Verdi: {item.Item2}");
+            }
+            Console.WriteLine("-----------------");
+            list.AddLast(240);
+            list.AddLast(250);
+            list.AddLast(260);
+
+            Console.WriteLine("-----------------");
+            Console.WriteLine("Elementer i listen:");
+            foreach (var item in list.PrintContent())
+            {
+                Console.WriteLine($"Index: {item.Item1}, Verdi: {item.Item2}");
+            }
+
+            Console.WriteLine("Antall elementer i listen: " + list.Count);
+            Console.WriteLine($"Er tallet 10 i listen:{list.Contains(10)}");
+            list.Remove(10);
+            Console.WriteLine($"Hvor mange elementer er det i listen Før AddLast: {list.Count}");
+
+
+            list.AddLast(33);
+            list.AddLast(44);
+            Console.WriteLine($"Hvor mange elementer er det i listen etter AddLast: {list.Count}");
+            Console.WriteLine($"Er tallet 10 i listen:{list.Contains(10)}");
+
+            Console.WriteLine("-----------------");
+            Console.WriteLine("Elementer i listen:");
+            foreach (var item in list.PrintContent())
+            {
+                Console.WriteLine($"Index: {item.Item1}, Verdi: {item.Item2}");
+            }
+
+            Console.WriteLine($"Hvor mange elementer er det i listen: {list.Count}");
+
+            Console.WriteLine("\n-----------------");
+            Console.WriteLine("Test av Contains");
+            Console.WriteLine($"Contains(33): {list.Contains(33)}");
+            Console.WriteLine($"Contains(99): {list.Contains(99)}");
+
+        }
+    }
+}

@@ -1,86 +1,121 @@
-using System.Collections;
-using System.Collections.Generic;
 
-namespace Datastrukturer;
-
-public class SinglyLinkedList<T> : ISinglyLinkedList<T>, IEnumerable<T>
+namespace Datastrukturer.Interfaces
 {
-    private class Node
+    public class SinglyLinkedList<T> : ISinglyLinkedList<T>
     {
-        public T Value;
-        public Node? Next;
-        public Node(T value) => Value = value;
-    }
-
-    private Node? _head;
-    private Node? _tail;
-
-    public int Count { get; private set; }
-
-    public void AddFirst(T item)
-    {
-        var node = new Node(item) { Next = _head };
-        _head = node;
-        if (_tail is null) _tail = node;
-        Count++;
-    }
-
-    public void AddLast(T item)
-    {
-        var node = new Node(item);
-        if (_tail is null)
+        private class Node
         {
-            _head = _tail = node;
-        }
-        else
-        {
-            _tail.Next = node;
-            _tail = node;
-        }
-        Count++;
-    }
+            public T Value;
+            public Node? Next;
 
-    public bool Remove(T item)
-    {
-        if (_head is null) return false;
-
-        var cmp = EqualityComparer<T>.Default;
-        Node? prev = null;
-        Node? curr = _head;
-
-        while (curr != null)
-        {
-            if (cmp.Equals(curr.Value, item))
+            public Node(T value)
             {
-                if (prev is null) _head = curr.Next;
-                else prev.Next = curr.Next;
+            Value = value;
+            }
+        }
 
-                if (curr == _tail) _tail = prev;
+        private Node? _head;
+        private Node? _tail;
+        public int Count { get; private set; }
 
+        public void AddFirst(T item)
+        {
+            var node = new Node(item);
+
+            if (_head == null)
+            {
+                _head = _tail = node;
+            }
+            else
+            {
+                node.Next = _head;
+                _head = node;
+            }
+            Count++;
+
+        }
+
+        public void AddLast(T item)
+        {
+            var node = new Node(item);
+            if (_tail == null)
+            {
+                _head = _tail = node;
+
+            }
+            else
+            {
+                _tail.Next = node;
+                _tail = node;
+            }
+            Count++;
+
+        }
+        
+        public bool Contains(T item)
+        {
+            var comparer = EqualityComparer<T>.Default;
+            var current = _head;
+
+            while (current != null)
+            {
+                if (comparer.Equals(current.Value, item))
+                    return true;
+                current = current.Next;
+            }
+            return false;
+        }
+
+
+        public bool Remove(T item)
+        {
+
+            if (_head == null) return false;
+
+            var comparer = EqualityComparer<T>.Default;
+
+            // Fjerner fra head
+            if (comparer.Equals(_head.Value, item)) // Sjekker om hodet er lik item
+            {
+                _head = _head.Next;
+                if (_head == null) _tail = null; // listen ble tom
                 Count--;
                 return true;
             }
 
-            prev = curr;
-            curr = curr.Next;
+            var current = _head;
+            while (current.Next != null && !comparer.Equals(current.Next.Value, item))
+            {
+                current = current.Next;
+            }
+
+            if (current.Next == null) return false; // ikke funnet
+
+            // Hvis vi fjerner siste node må vi flytte tail
+            if (current.Next == _tail) _tail = current;
+
+            // Koble forbi noden som matches
+            current.Next = current.Next.Next;
+            Count--;
+            return true;
+
+
         }
 
-        return false;
-    }
+        public IEnumerable<(int, T)> PrintContent()
+        {
 
-    public bool Contains(T item)
-    {
-        var cmp = EqualityComparer<T>.Default;
-        for (var n = _head; n != null; n = n.Next)
-            if (cmp.Equals(n.Value, item)) return true;
-        return false;
-    }
+            // viser indexen og verdien til hvert element
+            var index = 0;
+            var current = _head;
+            while (current != null)
+            {
+                yield return (index++, current.Value);
+                current = current.Next;
+            }
 
-    public IEnumerator<T> GetEnumerator()
-    {
-        for (var n = _head; n != null; n = n.Next)
-            yield return n.Value;
-    }
 
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        }
+    }
 }
