@@ -24,29 +24,29 @@ namespace Datastrukturer.Interfaces
 
             if (_head == null)
             {
-                _head = _tail = node;
+                _head = _tail = node;   // både head og tail peker på den nye noden
             }
             else
             {
-                node.Next = _head;
-                _head = node;
+                node.Next = _head;      // den nye noden peker på den gamle head
+                _head = node;        // oppdaterer head til å være den nye noden
             }
             Count++;
 
         }
 
-        public void AddLast(T item)
+        public void AddLast(T item)     // Legger til et element på slutten av listen
         {
-            var node = new Node(item);
-            if (_tail == null)
+            var node = new Node(item);  
+            if (_tail == null)          // Sjekker om listen er tom
             {
-                _head = _tail = node;
+                _head = _tail = node;  
 
             }
             else
             {
-                _tail.Next = node;
-                _tail = node;
+                _tail.Next = node;      // den gamle tail peker på den nye noden
+                _tail = node;           // oppdaterer tail til å være den nye noden
             }
             Count++;
 
@@ -54,7 +54,7 @@ namespace Datastrukturer.Interfaces
         
         public bool Contains(T item)
         {
-            var comparer = EqualityComparer<T>.Default;
+            var comparer = EqualityComparer<T>.Default; // Bruker standard likhets-sjekker
             var current = _head;
 
             while (current != null)
@@ -78,7 +78,7 @@ namespace Datastrukturer.Interfaces
             if (comparer.Equals(_head.Value, item)) // Sjekker om hodet er lik item
             {
                 _head = _head.Next;
-                if (_head == null) _tail = null; // listen ble tom
+                if (_head == null) _tail = null;    // listen er nå tom
                 Count--;
                 return true;
             }
@@ -89,7 +89,7 @@ namespace Datastrukturer.Interfaces
                 current = current.Next;
             }
 
-            if (current.Next == null) return false; // ikke funnet
+            if (current.Next == null) return false; // item ikke funnet
 
             // Hvis vi fjerner siste node må vi flytte tail
             if (current.Next == _tail) _tail = current;
