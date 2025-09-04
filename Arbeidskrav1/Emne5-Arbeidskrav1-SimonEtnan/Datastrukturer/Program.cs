@@ -8,34 +8,42 @@ namespace Datastrukturer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\nCircular Queue test:\n-----------------------------");
-            var capacity = 4;
+            Console.WriteLine("\nCircular Queue test:");
+            Console.WriteLine("-----------------------------");
+
+            int capacity = 4;
             var cq = new CircularQueue<int>(capacity);
 
-
-
-
-            Console.WriteLine("----------------------");
-
             Console.WriteLine($"Kapasitet er satt til {capacity}");
-            Console.WriteLine($"Her er listen i sin helhet: {string.Join(", ", cq.PrintCircularQueue())}");
+
+            // Legg inn elementer
             cq.Enqueue(10);
             cq.Enqueue(20);
             cq.Enqueue(30);
+            cq.Enqueue(40);
+            cq.Enqueue(50); // Dette skal kaste en feil fordi køen er full
+            Console.WriteLine($"Etter enqueue: {string.Join(", ", cq.PrintCircularQueue())}");
 
-            Console.WriteLine("Henter ut element:");
-            Console.WriteLine(cq.Dequeue());
+            // Ta ut ett element
+            Console.WriteLine($"Dequeue: {cq.Dequeue()}");
+            Console.WriteLine($"Etter dequeue: {string.Join(", ", cq.PrintCircularQueue())}");
 
+            // Legg inn nytt element
             cq.Enqueue(50);
+            Console.WriteLine($"Etter enqueue(50): {string.Join(", ", cq.PrintCircularQueue())}");
 
-            Console.WriteLine("Topp element er: " + cq.Peek());
+            // Ser på topp-element
+            Console.WriteLine($"Peek (topp element): {cq.Peek()}");
 
+            // Tømmer køen helt
             while (!cq.IsEmpty)
             {
-                Console.WriteLine("Henter ut element: " + cq.Dequeue());
+                Console.WriteLine($"Dequeue: {cq.Dequeue()}");
+                Console.WriteLine($"Nå: {string.Join(", ", cq.PrintCircularQueue())}");
             }
 
-            Console.WriteLine($"Her er listen i sin helhet: {string.Join(", ", cq.PrintCircularQueue())}");
+            Console.WriteLine("Køen er nå tom.");
+            Console.WriteLine("-----------------------------");
 
             Console.WriteLine("\n-----------------------------");
 
