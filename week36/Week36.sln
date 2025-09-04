@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recursion", "Recursion\Recursion.csproj", "{32F4FAD2-C5B1-4597-86CC-316287D7D015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinearSearch", "LinearSearch\LinearSearch.csproj", "{3E19CDC9-E5BD-4E93-A086-D4C64A90B984}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomDataBinarySearch", "CustomDataBinarySearch\CustomDataBinarySearch.csproj", "{D0B65B77-9A73-419B-B332-32166507FD99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32F4FAD2-C5B1-4597-86CC-316287D7D015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F4FAD2-C5B1-4597-86CC-316287D7D015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F4FAD2-C5B1-4597-86CC-316287D7D015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F4FAD2-C5B1-4597-86CC-316287D7D015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E19CDC9-E5BD-4E93-A086-D4C64A90B984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E19CDC9-E5BD-4E93-A086-D4C64A90B984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E19CDC9-E5BD-4E93-A086-D4C64A90B984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E19CDC9-E5BD-4E93-A086-D4C64A90B984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0B65B77-9A73-419B-B332-32166507FD99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0B65B77-9A73-419B-B332-32166507FD99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0B65B77-9A73-419B-B332-32166507FD99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0B65B77-9A73-419B-B332-32166507FD99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
