@@ -36,9 +36,24 @@ public class Person : IComparable<Person>
         return $"Firstname: {FirstName}, Lastname: {LastName}, Age: {Age}";
     }
 
-    public class Person2 : IComparable<Person2>
+
+}
+
+public class Person2
 {
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
-    public int Age { get; set; } = 0;
+    public int Age { get; set; }
+
+    public override string ToString() => $"Firstname: {FirstName}, Lastname: {LastName}, Age: {Age}";
+
+   
+
+    public override string ToString()
+    {
+        return $"Firstname: {FirstName}, Lastname: {LastName}, Age: {Age}";
+    }
+
+
 }
+

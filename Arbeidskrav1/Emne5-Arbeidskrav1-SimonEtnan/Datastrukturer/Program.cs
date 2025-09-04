@@ -16,19 +16,24 @@ namespace Datastrukturer
 
             Console.WriteLine($"Kapasitet er satt til {capacity}");
 
-            // Legg inn elementer
-            cq.Enqueue(10);
-            cq.Enqueue(20);
-            cq.Enqueue(30);
-            cq.Enqueue(40);
-            cq.Enqueue(50); // Dette skal kaste en feil fordi køen er full
-            Console.WriteLine($"Etter enqueue: {string.Join(", ", cq.PrintCircularQueue())}");
-
-            // Ta ut ett element
+            try
+            {
+                cq.Enqueue(10);
+                cq.Enqueue(20);
+                cq.Enqueue(30);
+                cq.Enqueue(40);
+                cq.Enqueue(50);
+                cq.Enqueue(60); // Dette skal kaste en feil
+                Console.WriteLine($"Etter enqueue: {string.Join(", ", cq.PrintCircularQueue())}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"Kunne ikke legge til alle elementer: {ex.Message}");
+            }
+            Console.WriteLine($"Nåværende elementer: {string.Join(", ", cq.PrintCircularQueue())}");
             Console.WriteLine($"Dequeue: {cq.Dequeue()}");
             Console.WriteLine($"Etter dequeue: {string.Join(", ", cq.PrintCircularQueue())}");
 
-            // Legg inn nytt element
             cq.Enqueue(50);
             Console.WriteLine($"Etter enqueue(50): {string.Join(", ", cq.PrintCircularQueue())}");
 
@@ -39,11 +44,9 @@ namespace Datastrukturer
             while (!cq.IsEmpty)
             {
                 Console.WriteLine($"Dequeue: {cq.Dequeue()}");
-                Console.WriteLine($"Nå: {string.Join(", ", cq.PrintCircularQueue())}");
             }
-
-            Console.WriteLine("Køen er nå tom.");
-            Console.WriteLine("-----------------------------");
+            Console.WriteLine($"Er køen tom? {cq.IsEmpty}");
+            // vise at køen er tom
 
             Console.WriteLine("\n-----------------------------");
 

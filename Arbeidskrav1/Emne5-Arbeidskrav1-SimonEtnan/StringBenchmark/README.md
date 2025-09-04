@@ -1,15 +1,15 @@
-# Arbeidskrav 1 – Algoritmiske Metoder
-**Student:** Simon Etnan  
-**Emne:** Emne 5 - Algoritmiske metoder (Campus Sandefjord)  
-**Innleveringsfrist:** Uke 36, fredag 5. september 2025  
-**Levering:** Zip-fil med kode, benchmark-resultater og README  
+# Arbeidskrav 1 – Del 1: Algoritmiske Metoder
+av Simon Etnan
+
+Dette prosjektet er en del av innleveringen i faget *Algoritmiske Metoder* ved Gokstadakademiet.  
+Oppgaven går ut på å bygge strenger og teste disse oppimot hverandre ved hjelp av Benchmarking 
 
 ---
 
 ## Oppgave 1 – Bygging av strenger og benchmarking
 
 ### 1.1 Implementasjoner
-Det er implementert syv måter å bygge en streng som består av `n` like tegn:
+Jeg har brukt syv forskjellige måter å bygge en streng som består av `n` like tegn på:
 
 1. **PlusOperator** – `s += 'x'` i løkke (baseline)  
 2. **StringBuilder_NoCapacity** – `new StringBuilder()` + `Append('x')`  
@@ -28,6 +28,13 @@ Det er implementert syv måter å bygge en streng som består av `n` like tegn:
 - **Maskin:** AMD Ryzen 7 PRO 6850U (Fedora 42)  
 - **Verktøy:** [BenchmarkDotNet] v0.15.2  
 - **Parametre (N):** 10, 1 000, 10 000, 100 000  
+
+**Installasjon:**  
+Prosjektet bruker BenchmarkDotNet som benchmark-rammeverk. Hvis du ikke har det installert, legg det til slik:  
+```bash
+cd StringBenchmark
+dotnet add package BenchmarkDotNet
+```
 
 **Kjøring:**
 ```bash
@@ -111,8 +118,13 @@ Strenger er uforanderlige. `s += c` lager ny streng for hver iterasjon → *O(n�
 **Hvilke metoder gir minst allokeringer?**  
 `StringCreate_Fill`, `NewStringCtor` og `ArrayPoolFillThenCtor` allokerer bare sluttstrengen. De er mest minneeffektive.  
 
-**Anbefaling (praktisk tommelfingerregel):**  
+**Anbefaling:**  
 - Kun en streng av samme tegn → `string.Create` eller `new string(c, n)`  
 - Bygger du gradvis → `StringBuilder(n)` hvis du vet størrelse, ellers `StringBuilder()`  
 
----
+## Bruk av AI
+- AI er brukt aktivt for problemsøking og for å få bedre konseptuell forståelse. Jeg spurte også AI om tips til hvilke andre metoder som kunne være raskere i forhold til de som var nevnt i oppgaven. Basert på disse spørringene og litt ekstre research fant jeg frem til StringCreate_Fill og ArrayPoolFillThenCtor som jeg har brukt her.
+- Jeg brukte også AI for å generere en mal for README.md filen med riktig formatering og uthenting av resultatdata som senere er tilpasset til å matche mitt spesifikke prosjekt.
+
+## Egne refleksjoner
+Det var morro å jobbe med denne oppgaven og sammenlikne de forskjellige variantene for ikke å snakke om prosessen med å forsøke å optimalisere hastigheten. Jeg synes det er et veldig stilig verktøy som jeg ser frem til å bruke videre.

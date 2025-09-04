@@ -20,7 +20,7 @@ namespace Datastrukturer.Interfaces
 
         public void AddFirst(T item)
         {
-            var node = new Node(item);
+            var node = new Node(item); // oppretter en ny node
 
             if (_head == null)
             {
