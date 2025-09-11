@@ -1,4 +1,4 @@
-namespace BinaryTree.Datastructures;
+﻿namespace BinaryTree.Datastructures;
 
 public sealed class Node<T>(T value)
 {

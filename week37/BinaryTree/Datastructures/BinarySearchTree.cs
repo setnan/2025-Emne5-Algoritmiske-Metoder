@@ -1,4 +1,5 @@
-namespace BinaryTree.Datastructures;
+﻿namespace BinaryTree.Datastructures;
+
 
 public class BinarySearchTree<T>(IComparer<T> comparer = null)
     where T : IComparable<T>
@@ -6,7 +7,8 @@ public class BinarySearchTree<T>(IComparer<T> comparer = null)
     private readonly IComparer<T> _comparer = comparer ?? Comparer<T>.Default;
     private Node<T>? _root = null;
     private int _count;
-
+    
+    
     public int Count => _count;
     public bool IsEmpty => _count == 0;
 
@@ -18,19 +20,19 @@ public class BinarySearchTree<T>(IComparer<T> comparer = null)
             _count++;
             return;
         }
-
+        
         // start from the root
         Node<T> current = _root;
         while (true)
         {
             int cmp = _comparer.Compare(value, current.Value);
-
+            
             // go left
             if (cmp < 0)
             {
                 if (current.Left == null)
                 {
-                    // Vi kan legge til noden her
+                    // vi kan legge til noden her
                     current.Left = new Node<T>(value);
                     _count++;
                     return;
@@ -41,6 +43,7 @@ public class BinarySearchTree<T>(IComparer<T> comparer = null)
             {
                 if (current.Right == null)
                 {
+                    // vi kan legge til noden her
                     current.Right = new Node<T>(value);
                     _count++;
                     return;
@@ -53,15 +56,17 @@ public class BinarySearchTree<T>(IComparer<T> comparer = null)
     public bool Contains(T value)
     {
         Node<T>? current = _root;
-        while (current != null) // så lenge det finnes noder å sjekke
+        while(current != null) // så lenge det finnes noder å sjekke
         {
             int cmp = _comparer.Compare(value, current.Value);
             if (cmp == 0) return true; // vi fant verdien
-            current = cmp < 0
-            ? current.Left   // gå til venstre
-            : current.Right; // gå til høyre
+            
+            // gå venstre eller høyre avhengig av sammenligningen
+            current = (cmp < 0) 
+                ? current.Left 
+                : current.Right;
         }
-        return false; // vi fant ikke verdien
-    }
 
+        return false;
+    }
 }
