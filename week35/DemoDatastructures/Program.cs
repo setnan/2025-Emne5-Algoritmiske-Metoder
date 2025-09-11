@@ -1,7 +1,7 @@
-﻿using DemoDataStructures;
+﻿using DemoDatastructures;
 
 Console.WriteLine("Demo av datastrukturer");
-Console.WriteLine("-----------------------------");
+Console.WriteLine("--------------------------");
 
 Console.WriteLine("Array demo:");
 Demo.ArrayDemo();
@@ -17,3 +17,4 @@ Demo.StackDemo();
 
 Console.WriteLine("\nQueue demo:");
 Demo.QueueDemo();
+

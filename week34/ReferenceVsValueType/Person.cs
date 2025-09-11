@@ -1,4 +1,4 @@
-namespace RefernceVsValueType;
+﻿namespace ReferenceVsValueType;
 
 public class Person
 {
@@ -8,9 +8,9 @@ public class Person
     {
         p.Name = "Name Changed!";
     }
-
+    
     public static void ReplacePerson(ref Person p)
     {
-        p = new Person {Name = "Yngve"};
+        p = new Person{Name = "Yngve"};
     }
 }

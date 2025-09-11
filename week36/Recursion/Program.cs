@@ -1,13 +1,8 @@
-﻿using BenchmarkDotNet.Running;
-namespace week36.Recursion
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine($"Factorial of 4 is: {RecursiveMethods.Factorial(4)}");
-            BenchmarkRunner.Run<StringBuildBenchmark>();
-        }
+﻿
+using BenchmarkDotNet.Running;
+using Recursion;
 
-    }
-}
+// Console.WriteLine($"Factorial of 4 is: {RecursiveMethods.Factorial(4)}");
+
+BenchmarkRunner.Run<SumBenchmark>();
+

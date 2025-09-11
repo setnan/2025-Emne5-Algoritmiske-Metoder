@@ -1,21 +1,19 @@
 ﻿using System.Diagnostics;
-using System;
 
-int loopCount = 100_000_000;
-int count = 100;
+int loopCount = 10_000_000;
+int count = 100000; 
 
 Console.WriteLine($"Sum of numbers from 1 to {count}: {SumNumbers(count)}");
 
-Stopwatch stopwatch = new Stopwatch();
-stopwatch.Start();
-
+Stopwatch stopWatch = new Stopwatch();
+stopWatch.Start();
 for (int i = 0; i < loopCount; i++)
 {
     SumNumbers(count);
 }
+stopWatch.Stop();
+Console.WriteLine($"Total time for {loopCount} iterations: {stopWatch.ElapsedMilliseconds} ms");
 
-stopwatch.Stop();
-Console.WriteLine($"Time taken for {loopCount} iterations: {stopwatch.ElapsedMilliseconds} ms");
 
 int SumNumbers(int n)
 {

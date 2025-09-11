@@ -1,4 +1,4 @@
-namespace RefernceVsValueType;
+﻿namespace ReferenceVsValueType;
 
 public struct Point
 {
@@ -10,7 +10,7 @@ public struct Point
         p.X = 100;
         p.Y = 200;
     }
-
+    
     public static void ChangePointRef(ref Point p)
     {
         p.X = 300;
