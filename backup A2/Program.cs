@@ -1,5 +1,11 @@
-﻿using BenchmarkDotNet.Running;
-using Oppgave1;
+
+
+namespace Oppgave1
+{
+
+using BenchmarkDotNet.Running;
+
+}
 
 
 // Test av funksjonene
@@ -15,6 +21,4 @@ using Oppgave1;
 // Console.WriteLine(Iteration.FibIterative(6));   // 8
 // Console.WriteLine(Iteration.FibIterative(10));  // 55
 
-
-        BenchmarkRunner.Run<FibonacciBenchmark>();
-
+BenchmarkRunner.Run<FibonacciBenchmark>();

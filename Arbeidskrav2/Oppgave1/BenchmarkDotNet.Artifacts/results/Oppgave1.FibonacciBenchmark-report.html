@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Oppgave1.FibonacciBenchmark-20250917-110823</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.15.2, Linux Fedora Linux 42 (Workstation Edition)
+AMD Ryzen 7 PRO 6850U with Radeon Graphics 4.77GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 9.0.109
+  [Host]     : .NET 9.0.8 (9.0.825.36511), X64 RyuJIT AVX2
+  DefaultJob : .NET 9.0.8 (9.0.825.36511), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>Method</th><th>N</th><th>Mean      </th><th>Error   </th><th>StdDev  </th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Rekursiv</td><td>5</td><td>16.564 ns</td><td>0.3409 ns</td><td>0.3789 ns</td><td>-</td>
+</tr><tr><td>Iterativ</td><td>5</td><td>2.021 ns</td><td>0.0268 ns</td><td>0.0250 ns</td><td>-</td>
+</tr><tr><td>Rekursiv</td><td>10</td><td>205.024 ns</td><td>2.4888 ns</td><td>2.0783 ns</td><td>-</td>
+</tr><tr><td>Iterativ</td><td>10</td><td>6.216 ns</td><td>0.1467 ns</td><td>0.1441 ns</td><td>-</td>
+</tr><tr><td>Rekursiv</td><td>20</td><td>28,632.599 ns</td><td>556.5759 ns</td><td>571.5625 ns</td><td>-</td>
+</tr><tr><td>Iterativ</td><td>20</td><td>9.314 ns</td><td>0.1104 ns</td><td>0.1033 ns</td><td>-</td>
+</tr><tr><td>Rekursiv</td><td>30</td><td>3,501,049.766 ns</td><td>44,248.4162 ns</td><td>39,225.0684 ns</td><td>-</td>
+</tr><tr><td>Iterativ</td><td>30</td><td>20.867 ns</td><td>0.1899 ns</td><td>0.1483 ns</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>
