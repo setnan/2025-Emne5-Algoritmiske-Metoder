@@ -1,15 +1,20 @@
 ﻿using Oppgave2;
 
-BinarySearch<int> myTree = new();
-myTree.Add(45);
-myTree.Add(34);
-myTree.Add(71);
-myTree.Add(22);
-myTree.Add(87);
-myTree.Add(66);
-myTree.Add(40);
+    int FoundIndex = -1;
 
-Console.WriteLine($"Antall noder i treet: {myTree.Count}");
+if (numbers.Count % 2 == 0) FoundIndex = numbers.Count / 2;
 
-Console.WriteLine($"Inneholder treet 40? {myTree.Contains(40)}");
-Console.WriteLine($"Inneholder treet 55? {myTree.Contains(55)}");
+else FoundIndex = (numbers.Count - 1) / 2;
+
+
+
+// Console.WriteLine($"Antall noder i treet: {numbers.Count}");
+
+// Console.WriteLine($"Inneholder treet 40? {numbers.Contains(40)}");
+// Console.WriteLine($"Inneholder treet 55? {numbers.Contains(55)}");
+
+
+
+// ...
+
+Console.WriteLine(GetMiddle);
